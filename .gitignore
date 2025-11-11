@@ -1,0 +1,13 @@
+# Node
+node_modules
+.env
+
+# Python
+__pycache__/
+*.pyc
+venv/
+
+# macOS
+.DS_Store
+
+echo "MY PROJECT DEMO VIDEO.mp4" >> .gitignore

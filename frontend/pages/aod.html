@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+  <title>Environmental Data Entry</title>
+  <link rel="stylesheet" href="../css/aod.css">
+</head>
+<body>
+
+  <!-- Top Navbar with Dropdown -->
+  <div class="navbar">
+    <div class="dropdown">
+      <button class="dropbtn">☰ Menu</button>
+      <div class="dropdown-content">
+        <a id = "profile" href="">View Profile</a>
+        <a id = "logout" href="">Logout</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Environmental Data Form -->
+  <form class="form-container">
+    <h2>AOD Prediction Data Entry</h2>
+
+    <label for="frictionVelocity">Friction Velocity (m/s)</label>
+    <input type="number" step="any" id="frictionVelocity" name="zust" required>
+
+    <label for="biomassBurning">Biomass Burning Area (km²)</label>
+    <input type="number" step="any" id="biomassBurning" name="BA" required>
+
+    <label for="tsr">Top of Atmosphere Shortwave Radiation (W/m²)</label>
+    <input type="number" step="any" id="tsr" name="tsr" required>
+
+    <label for="tisr">Top of Atmosphere Incident Solar Radiation (W/m²)</label>
+    <input type="number" step="any" id="tisr" name="tisr" required>
+
+    <label for="landSurfaceTemp">Land Surface Temperature (°C)</label>
+    <input type="number" step="any" id="landSurfaceTemp" name="LST" required>
+
+    <label for="surfaceAirTemp">Surface Air Temperature (°C)</label>
+    <input type="number" step="any" id="surfaceAirTemp" name="t at 1000 hPa" required>
+
+    <label for="dewPoint">Dew Point at 850 hPa (°C)</label>
+    <input type="number" step="any" id="dewPoint" name="d at 850 hPa" required>
+
+    <label for="ndvi">Vegetation Index (NDVI)</label>
+    <input type="number" step="any" id="ndvi" name="NDVI" required>
+
+    <label for="precipitationType">Precipitation Type</label>
+    <select id="precipitationType" name="ptype" required>
+        <option value="">--Select Type--</option>
+        <option value="0">None</option>
+        <option value="1">Rain</option>
+        <option value="2">Snow</option>
+        <option value="3">Sleet</option>
+    </select>
+
+    <label for="windSpeed100m">Wind Speed at 100m (m/s)</label>
+    <input type="number" step="any" id="windSpeed100m" name="ws_100m" required>
+    
+    <label for="location">Location</label>
+    <input type="text" id="location" name="location" required>
+
+    <div class="action-row">
+      <button type="submit">Predict AOD</button>
+      <span id="msgbox"></span>
+    </div>
+  </form>
+  <script src="../js/aod.js"></script>
+</body>
+</html>

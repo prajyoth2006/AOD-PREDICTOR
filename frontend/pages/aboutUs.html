@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About</title>
+  <link href="../css/aboutUs.css" rel="stylesheet">
+</head>
+<body>
+  <div class="overview">
+    <h2>Overview</h2>
+    <p>
+      This project aims to predict Aerosol Optical Depth (AOD), a key indicator of air pollution and atmospheric
+      particulate matter, using a range of environmental and meteorological parameters such as wind speed,
+      temperature, cloud cover, soil moisture, and humidity. The approach involves collecting multi-source data
+      from satellite products like MODIS for AOD and NDVI, and reanalysis datasets such as ERA5 or MERRA-2 for
+      weather-related variables. After preprocessing the data to align spatial and temporal resolutions and
+      handling missing values, machine learning models—such as Random Forests or XGBoost—are trained to learn the
+      relationship between these input features and AOD levels. The model is validated using standard metrics like
+      RMSE and R², and further analyzed to understand the influence of each variable. The final output provides a
+      predictive tool capable of estimating AOD across space and time, which can support air quality monitoring
+      and environmental policy decisions.
+    </p>
+  </div>
+
+  <div class="working">
+    <h2>How it Works</h2>
+    <p>
+      The project uses a Convolutional Neural Network (CNN) to predict Aerosol Optical Depth (AOD) by learning
+      spatial patterns from environmental data such as wind speed, temperature, cloud cover, soil moisture, and
+      related variables. These input parameters are formatted as multi-channel images or grids that represent
+      different environmental layers over a geographic region. The CNN processes these inputs through
+      convolutional layers that extract spatial features, capturing local and regional interactions among
+      variables. By learning from historical data with known AOD values, the model identifies complex, nonlinear
+      relationships between the input features and AOD levels. Once trained, the CNN can predict AOD for new
+      environmental conditions, offering high-resolution, spatially-aware forecasts that are useful for air
+      quality assessment and environmental monitoring.
+    </p>
+  </div>
+
+  <div class="paramters">
+    <h2>Input Parameters for AOD Prediction using CNN</h2>
+    <table>
+      <tr>
+        <th>Parameter</th>
+        <th>Description</th>
+      </tr>
+      <tr>
+        <td>zust(Friction Velocity)</td>
+        <td>A measure of atmospheric turbulence and wind shear near the ground.</td>
+      </tr>
+      <tr>
+        <td>BA (Biomass Burning/Burning Area)</td>
+        <td>Indicates the presence and intensity of fire activity, a major source of aerosols.</td>
+      </tr>
+      <tr>
+        <td>Land Surface Temperature (LST)</td>
+        <td>Thermal emission from the land surface</td>
+      </tr>
+      <tr>
+        <td>tsr (Top of Atmosphere Shortwave Radiation)</td>
+        <td>The total amount of solar energy received at the top of the atmosphere.</td>
+      </tr>
+      <tr>
+        <td>tisr (Top of Atmosphere Incident Solar Radiation)</td>
+        <td>The amount of incoming solar radiation before it interacts with the atmosphere.</td>
+      </tr>
+      <tr>
+        <td>t at 1000 hPa (Temperature at 1000 hPa)</td>
+        <td> Air temperature at a pressure level very close to the Earth's surface.</td>
+      </tr>
+      <tr>
+        <td>d at 850 hPa (Dew Point at 850 hPa)</td>
+        <td>A measure of moisture content in the lower-to-mid atmosphere (around 1.5 km altitude).</td>
+      </tr>
+      <tr>
+        <td>NDVI (Normalized Difference Vegetation Index)</td>
+        <td>A satellite-derived metric that quantifies the health and density of green vegetation.</td>
+      </tr>
+      <tr>
+        <td>ptype (Precipitation Type)</td>
+        <td>The form of precipitation, such as rain, snow, or sleet, which can wash aerosols out of the air.</td>
+      </tr>
+      <tr>
+        <td>ws_100m (Wind Speed at 100 meters)</td>
+        <td>The speed of the wind at 100 meters above the ground, affecting aerosol transport</td>
+      </tr>
+    </table>
+  </div>
+</body>
+</html>
