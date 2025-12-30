@@ -10,4 +10,6 @@ venv/
 # macOS
 .DS_Store
 
+twwilio password.txt
+
 echo "MY PROJECT DEMO VIDEO.mp4" >> .gitignore
