@@ -12,7 +12,7 @@ document.querySelector("form").addEventListener("submit",async (event) => {
   }
 
   try {
-    let res = await fetch("http://localhost:8000/api/v1/user/update-password",{
+    let res = await fetch("https://aod-predictor.onrender.com/api/v1/user/update-password",{
       method : "POST",
       headers : {
         "Content-Type" : "application/json"

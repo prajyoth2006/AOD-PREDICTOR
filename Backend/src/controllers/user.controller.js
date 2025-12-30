@@ -255,9 +255,11 @@ const getUserDetails = asyncHandler(async(req,res) => {
   }
 });
 
-const updateDetails = asyncHandler(async(req,res) => {
+const updateDetails = asyncHandler(async (req, res) => {
   console.log("request received on updateDetails");
-  const {newFullName,newPhone} = req.body;
+
+  const { newFullName, newPhone } = req.body;
+
   if (newFullName === undefined && newPhone === undefined) {
     throw new ApiError(400, "At least one of newFullName or newPhone must be provided");
   }
@@ -267,19 +269,20 @@ const updateDetails = asyncHandler(async(req,res) => {
     throw new ApiError(404, "User not found");
   }
 
-  if (newFullName !== "") {
+  if (typeof newFullName === "string" && newFullName.trim() !== "") {
     user.fullName = newFullName.trim();
   }
 
-  if (newPhone !== "") {
+  if (typeof newPhone === "string" && newPhone.trim() !== "") {
     user.phone = newPhone.trim();
   }
 
-  await user.save({validateBeforeSave : false});
+  await user.save({ validateBeforeSave: false });
 
   const updatedUser = await User.findById(user._id).select("-password -refreshToken");
 
-  console.log(`successfully changed all fields which are requested`);
+  console.log("successfully changed all fields which are requested");
+
   return res.status(200).json(
     new ApiResponce(200, "User details updated successfully", { updatedUser })
   );

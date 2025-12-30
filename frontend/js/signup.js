@@ -18,7 +18,7 @@ document.querySelector("form").addEventListener("submit",async (event) => {
   }
 
   try {
-    let responce = await fetch("http://localhost:8000/api/v1/user/register",{
+    let responce = await fetch("https://aod-predictor.onrender.com/api/v1/user/register",{
       method : "POST",
       headers : {
         "Content-Type" : "application/json"

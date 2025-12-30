@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   const profileContainer = document.getElementById("profile-container");
 
   try {
-    const res = await fetch("http://localhost:8000/api/v1/user/user-details", {
+    const res = await fetch("https://aod-predictor.onrender.com/api/v1/user/user-details", {
       method: "GET",
       credentials: "include",
     });

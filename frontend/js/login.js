@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", async () => {
   // Check if user is already logged in (session cookie exists)
   try {
-    const res = await fetch("http://localhost:8000/api/v1/user/user-details", {
+    const res = await fetch("https://aod-predictor.onrender.com/api/v1/user/user-details", {
       method: "GET",
       credentials: "include",
     });
@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     try {
       console.log("Attempting login...");
 
-      let res = await fetch("http://localhost:8000/api/v1/user/login", {
+      let res = await fetch("https://aod-predictor.onrender.com/api/v1/user/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

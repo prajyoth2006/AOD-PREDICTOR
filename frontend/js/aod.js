@@ -3,7 +3,7 @@ const msgbox = document.querySelector("#msgbox");
 document.querySelector("#logout").addEventListener("click", async (event) => {
   event.preventDefault();
   try {
-  let res = await fetch("http://localhost:8000/api/v1/user/logout", {
+  let res = await fetch("https://aod-predictor.onrender.com/api/v1/user/logout", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
