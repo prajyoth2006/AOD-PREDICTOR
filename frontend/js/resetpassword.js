@@ -30,7 +30,7 @@ document.querySelector("form").addEventListener("submit",async (event) => {
       
       //redirecting to reset password
       setTimeout(() => {
-        window.location.replace("http://localhost:5500/pages/login.html");
+        window.location.replace("/pages/login.html");
       },1500);
     } else {
       msgbox.textContent = data.message || "Failed to verify OTP";

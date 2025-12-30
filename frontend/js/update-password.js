@@ -32,7 +32,7 @@ document.querySelector("form").addEventListener("submit",async (event) => {
       document.querySelector("form").reset();
 
       setTimeout(() => {
-        window.location.replace("http://localhost:5500/pages/profile.html")
+        window.location.replace("/pages/profile.html")
       },1500);
     }else{
       msgbox.innerHTML = data.message || "Password update failed";

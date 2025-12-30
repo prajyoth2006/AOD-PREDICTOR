@@ -1,47 +1,56 @@
-document.querySelector("form").addEventListener("submit",async(event) => {
-  event.preventDefault();
+const form = document.querySelector("form");
+const msgbox = document.querySelector("#msgbox");
 
-  let email = document.querySelector("#email").value.trim();
-  let msgbox = document.querySelector("#msgbox");
+if (form) {
+  form.addEventListener("submit", async (event) => {
+    event.preventDefault();
 
-  if(!email){
-    alert("email is required");
-    return;
-  }
+    const emailInput = document.querySelector("#email");
+    if (!emailInput) return;
 
-  try {
-    let res = await fetch("https://aod-predictor.onrender.com/api/v1/user/forget-pass-req",{
-      method : "POST",
-      headers : {
-        "Content-Type" : "application/json"
-      },
-      body : JSON.stringify({
-        email
-      }),
-      credentials : "include"
-    });
+    const email = emailInput.value.trim();
 
-    let data = await res.json();
-
-    if(res.ok){
-      msgbox.innerHTML = "Otp sent Successfully!";
-      msgbox.style.backgroundColor = "green";
-      document.querySelector("form").reset();
-
-      setTimeout(() => {
-        window.location.replace("http://localhost:5500/pages/forgotpassword-verify.html");
-      },1500);
-    }else{
-      msgbox.innerHTML = data.message || "Failed to sent otp";
-      msgbox.style.backgroundColor = "red";
-      console.log(data.message);
-      alert(data.message || "Failed to sent otp");
+    if (!email) {
+      alert("Email is required");
+      return;
     }
-  } catch (error) {
-    alert(`Error connecting to server. Error = ${error.message}`);
-    console.log(
-      `Error occurred while connecting to backend servers. Error: ${error}`
-    );
-    msgbox.innerHTML = `Error = ${error.message}`;
-  }
-});
+
+    try {
+      const res = await fetch(
+        "https://aod-predictor.onrender.com/api/v1/user/forget-pass-req",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ email }),
+          credentials: "include"
+        }
+      );
+
+      const data = await res.json().catch(() => ({}));
+
+      if (res.ok) {
+        if (msgbox) {
+          msgbox.innerHTML = "OTP sent successfully!";
+          msgbox.style.backgroundColor = "green";
+        }
+
+        form.reset();
+
+        setTimeout(() => {
+          window.location.replace("/pages/forgotpassword-verify.html");
+        }, 1500);
+      } else {
+        const message = data.message || "Failed to send OTP";
+        if (msgbox) {
+          msgbox.innerHTML = message;
+          msgbox.style.backgroundColor = "red";
+        }
+        alert(message);
+      }
+    } catch (error) {
+      const message = `Error connecting to server: ${error.message}`;
+      alert(message);
+      if (msgbox) msgbox.innerHTML = message;
+    }
+  });
+}

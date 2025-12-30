@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     if (res.ok) {
       // Already logged in, redirect directly
-      window.location.replace("http://localhost:5500/pages/aod.html");
+      window.location.replace("/pages/aod.html");
       return;
     }
   } catch (err) {
@@ -49,7 +49,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         document.querySelector("form").reset();
 
         setTimeout(() => {
-          window.location.href = "http://localhost:5500/pages/aod.html";
+          window.location.href = "/pages/aod.html";
         }, 1500);
       } else {
         msgbox.innerHTML = "LOGIN FAILED";
