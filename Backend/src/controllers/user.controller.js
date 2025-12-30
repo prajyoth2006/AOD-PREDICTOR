@@ -98,13 +98,14 @@ const loginUser = asyncHandler(async(req,res) => {
 
   const loggedUser = await User.findById(user._id).select("-password -refreshToken");
 
-  const options =  {
-    httpOnly: true,
-    secure: false,         // ❗ MUST be false on localhost (no HTTPS)
-    sameSite: "Lax",       // "lax" is good for local dev
-    maxAge: 15 * 60 * 1000,
-    path : "/" // 15 minutes
-  }
+  const options = {
+  httpOnly: true,
+  secure: process.env.NODE_ENV === "production",
+  sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
+  maxAge: 15 * 60 * 1000,
+  path: "/"
+};
+
 
   console.log(`User successfully logged in with user id : ${loggedUser._id} and email : ${loggedUser.email}`);
   res.status(200).cookie("accessToken",accessToken,options).cookie("refreshToken",refreshToken,options).json(
@@ -305,13 +306,13 @@ const forgetPasswordRequest = asyncHandler(async(req,res) => {
       {expiresIn : process.env.VERIFY_PASSWORD_EXPIRY}
     );
 
-    const options =  {
-      httpOnly: true,
-      secure: false,         // ❗ MUST be false on localhost (no HTTPS)
-      sameSite: "Lax",       // "lax" is good for local dev
-      maxAge: 15 * 60 * 1000,
-      path : "/" // 15 minutes
-    }
+    const options = {
+  httpOnly: true,
+  secure: process.env.NODE_ENV === "production",
+  sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
+  maxAge: 15 * 60 * 1000,
+  path: "/"
+};
 
     return res
     .status(200)
@@ -350,12 +351,13 @@ const forgetPasswordVerify = asyncHandler(async (req, res) => {
   const { otpEntered } = req.body;
 
   const options = {
-    httpOnly: true,
-    secure: false,
-    sameSite: "Lax",
-    maxAge: 15 * 60 * 1000,
-    path: "/",
-  };
+  httpOnly: true,
+  secure: process.env.NODE_ENV === "production",
+  sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
+  maxAge: 15 * 60 * 1000,
+  path: "/"
+};
+
 
   const resetToken = jwt.sign(
     { userEmail },
@@ -413,12 +415,13 @@ const resetPassword = asyncHandler(async(req,res) => {
   }
 
   const options = {
-    httpOnly: true,
-    secure: false,
-    sameSite: "Lax",
-    maxAge: 15 * 60 * 1000,
-    path: "/",
-  };
+  httpOnly: true,
+  secure: process.env.NODE_ENV === "production",
+  sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
+  maxAge: 15 * 60 * 1000,
+  path: "/"
+};
+
 
   user.password = newPassword;
   try {
