@@ -45,3 +45,16 @@ npm run start:backend
 ### Run Machine learning model 
 - cd aodModel 
 - uvicorn main:app --reload --port 2000
+
+## 🎯 Key Features
+- Predicts **Aerosol Optical Depth (AOD)** using machine learning
+- Simple and responsive frontend built with **HTML, CSS, and JavaScript**
+- RESTful backend API for efficient data processing
+- Independent ML service for scalable and modular predictions
+
+---
+
+## 📈 Applications
+- Air quality monitoring and assessment
+- Environmental and climate research
+- Academic and scientific analysis
