@@ -6,7 +6,7 @@ otpInputs.forEach((input, index) => {
   input.addEventListener("input", (e) => {
     const value = e.target.value;
 
-    //move to next box when number is entered
+    // move to next box when number is entered
     if (value.length === 1 && index < otpInputs.length - 1) {
       otpInputs[index + 1].focus();
     }
@@ -42,13 +42,14 @@ form.addEventListener("submit", async (event) => {
   }
 
   try {
-    let res = await fetch("https://aod-predictor.onrender.com/api/v1/user/forget-pass-verify", {
+    // UPDATED: Using relative path for Netlify Proxy
+    let res = await fetch("/api/v1/user/forget-pass-verify", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
       },
       body: JSON.stringify({ otpEntered }),
-      credentials: "include"
+      credentials: "include" // Vital for maintaining session context in Safari
     });
 
     let data = await res.json();
@@ -57,10 +58,10 @@ form.addEventListener("submit", async (event) => {
       msgbox.style.backgroundColor = "green";
       otpInputs.forEach(input => input.value = "");
       
-      //redirecting to reset password
+      // redirecting to reset password
       setTimeout(() => {
         window.location.replace("/pages/resetpassword.html");
-      },1500);
+      }, 1500);
     } else {
       msgbox.textContent = data.message || "Failed to verify OTP";
       msgbox.style.backgroundColor = "red";
@@ -73,4 +74,3 @@ form.addEventListener("submit", async (event) => {
     console.error("Fetch error:", error);
   }
 });
-

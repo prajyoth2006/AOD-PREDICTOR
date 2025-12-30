@@ -11,7 +11,8 @@ document.querySelector("form").addEventListener("submit",async (event) => {
   }
 
   try {
-    let res = await fetch("https://aod-predictor.onrender.com/api/v1/user/update-details",{
+    // UPDATED: Using relative path for Netlify Proxy
+    let res = await fetch("/api/v1/user/update-details",{
       method : "POST",
       headers : {
         "Content-Type" : "application/json"
@@ -20,7 +21,7 @@ document.querySelector("form").addEventListener("submit",async (event) => {
         newFullName,
         newPhone
       }),
-      credentials : "include",
+      credentials : "include", // Required to send the session cookie back to the server
     });
 
     let data = await res.json();

@@ -16,13 +16,14 @@ if (form) {
     }
 
     try {
+      // UPDATED: Using relative path for Netlify Proxy
       const res = await fetch(
-        "https://aod-predictor.onrender.com/api/v1/user/forget-pass-req",
+        "/api/v1/user/forget-pass-req",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ email }),
-          credentials: "include"
+          credentials: "include" // Keeps session consistency in Safari
         }
       );
 

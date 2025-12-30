@@ -18,7 +18,8 @@ document.querySelector("form").addEventListener("submit",async (event) => {
   }
 
   try {
-    let responce = await fetch("https://aod-predictor.onrender.com/api/v1/user/register",{
+    // UPDATED: Using relative path for Netlify Proxy
+    let responce = await fetch("/api/v1/user/register",{
       method : "POST",
       headers : {
         "Content-Type" : "application/json"
@@ -29,6 +30,7 @@ document.querySelector("form").addEventListener("submit",async (event) => {
         phone,
         password
       }),
+      credentials: "include" // Added to ensure session cookies are handled if sent on register
     })
   
     let msgbox = document.querySelector("#msg");

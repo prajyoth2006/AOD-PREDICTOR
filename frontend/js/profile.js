@@ -2,9 +2,10 @@ document.addEventListener("DOMContentLoaded", async () => {
   const profileContainer = document.getElementById("profile-container");
 
   try {
-    const res = await fetch("https://aod-predictor.onrender.com/api/v1/user/user-details", {
+    // UPDATED: Using relative path to go through the Netlify Proxy
+    const res = await fetch("/api/v1/user/user-details", {
       method: "GET",
-      credentials: "include",
+      credentials: "include", // This sends the cookie back to the server
     });
 
     const result = await res.json();
@@ -24,4 +25,3 @@ document.addEventListener("DOMContentLoaded", async () => {
     profileContainer.innerHTML = `<p>Error loading profile: ${error.message}</p>`;
   }
 });
-

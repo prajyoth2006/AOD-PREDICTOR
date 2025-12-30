@@ -12,7 +12,8 @@ document.querySelector("form").addEventListener("submit",async (event) => {
   }
 
   try {
-    let res = await fetch("https://aod-predictor.onrender.com/api/v1/user/update-password",{
+    // UPDATED: Using relative path for Netlify Proxy to fix Safari cookie issues
+    let res = await fetch("/api/v1/user/update-password",{
       method : "POST",
       headers : {
         "Content-Type" : "application/json"
@@ -21,7 +22,7 @@ document.querySelector("form").addEventListener("submit",async (event) => {
         oldPassword,
         newPassword
       }),
-      credentials : "include"
+      credentials : "include" // Mandatory to send the session cookie for authentication
     });
 
     let data = await res.json();

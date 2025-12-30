@@ -11,7 +11,8 @@ document.querySelector("form").addEventListener("submit",async (event) => {
   }
 
   try {
-    let res = await fetch("https://aod-predictor.onrender.com/api/v1/user/reset-password",{
+    // UPDATED: Using relative path for Netlify Proxy
+    let res = await fetch("/api/v1/user/reset-password",{
       method : "POST",
       headers : {
         "Content-Type" : "application/json"
@@ -19,7 +20,7 @@ document.querySelector("form").addEventListener("submit",async (event) => {
       body : JSON.stringify({
         newPassword
       }),
-      credentials : "include"
+      credentials : "include" // Vital for Safari to send the session/OTP cookie
     });
 
     let data = await res.json();
@@ -28,7 +29,7 @@ document.querySelector("form").addEventListener("submit",async (event) => {
       msgbox.textContent = "OTP verified successfully!";
       msgbox.style.backgroundColor = "green";
       
-      //redirecting to reset password
+      //redirecting to login
       setTimeout(() => {
         window.location.replace("/pages/login.html");
       },1500);
