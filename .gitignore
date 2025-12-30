@@ -1,5 +1,5 @@
 # Node
-node_modules
+node_modules/
 .env
 
 # Python
@@ -10,6 +10,15 @@ venv/
 # macOS
 .DS_Store
 
+# Sensitive files
 twwilio password.txt
 
-echo "MY PROJECT DEMO VIDEO.mp4" >> .gitignore
+# Datasets
+*.csv
+
+# Training scripts
+train.py
+train_model.py
+
+# Media files
+MY PROJECT DEMO VIDEO.mp4

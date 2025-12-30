@@ -40,7 +40,6 @@ document.querySelector("#profile").addEventListener("click",async(event) => {
   window.location.replace("http://localhost:5500/pages/profile.html");
 });
 
-
 document.querySelector("form").addEventListener("submit", async (event) => {
   event.preventDefault();
 
