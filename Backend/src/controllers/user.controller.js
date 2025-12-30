@@ -100,13 +100,11 @@ const loginUser = asyncHandler(async(req,res) => {
 
   const options = {
   httpOnly: true,
-  secure: process.env.NODE_ENV === "production",
-  sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
+  secure: true,
+  sameSite: "none",
   maxAge: 15 * 60 * 1000,
   path: "/"
 };
-
-
   console.log(`User successfully logged in with user id : ${loggedUser._id} and email : ${loggedUser.email}`);
   res.status(200).cookie("accessToken",accessToken,options).cookie("refreshToken",refreshToken,options).json(
     new ApiResponce(201,"SUCCESSFULLY LOGGED IN",{user : loggedUser,accessToken,refreshToken})
