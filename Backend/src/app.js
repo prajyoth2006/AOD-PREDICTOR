@@ -7,7 +7,7 @@ const app = express();
 app.set("trust proxy", 1);
 
 app.use(cors({
-  origin: true,
+  origin: "https://relaxed-licorice-b4ba9a.netlify.app",
   credentials: true
 }));
 
