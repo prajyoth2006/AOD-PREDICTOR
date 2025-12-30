@@ -1,21 +1,23 @@
 import dotenv from "dotenv";
-import {connect_DB} from "./db/index.js";
-import {app} from "./app.js";
+import { connect_DB } from "./db/index.js";
+import { app } from "./app.js";
 
-dotenv.config({
-  path : './env'
-});
+if (process.env.NODE_ENV !== "production") {
+  dotenv.config();
+}
+
+const PORT = process.env.PORT || 8000;
 
 connect_DB()
-.then(() => {
-  app.listen(process.env.PORT,() => {
-    console.log(`app is listening to the port ${process.env.PORT}`);
-  });
+  .then(() => {
+    app.listen(PORT, () => {
+      console.log(`App is listening on port ${PORT}`);
+    });
 
-  app.on("error",(error) => {
-    console.log(`connection cannot be established to the mongodb ${error}`);
+    app.on("error", (error) => {
+      console.log(`Server error: ${error}`);
+    });
+  })
+  .catch((err) => {
+    console.log(`MONGODB CONNECTION ERROR: ${err}`);
   });
-})
-.catch((err) => {
-  console.log(`MONGODB CONNECTION ERROR HAS BEEN OCCURED !! The following error has been occured ${err}`);
-});
