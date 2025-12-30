@@ -5,8 +5,9 @@ if (logoutBtn) {
   logoutBtn.addEventListener("click", async (event) => {
     event.preventDefault();
     try {
+      // UPDATED: Changed to relative path to use Netlify Proxy
       const res = await fetch(
-        "https://aod-predictor.onrender.com/api/v1/user/logout",
+        "/api/v1/user/logout", 
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -67,6 +68,7 @@ if (form) {
         parseFloat(data.ws_100m)
       ];
 
+      // KEEP AS IS: This is a different service (ML model)
       const response = await fetch(
         "https://aod-ml-service.onrender.com/predict",
         {

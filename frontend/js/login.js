@@ -1,21 +1,20 @@
 document.addEventListener("DOMContentLoaded", async () => {
-  // Check if user is already logged in (session cookie exists)
+  // Check if user is already logged in
   try {
-    const res = await fetch("https://aod-predictor.onrender.com/api/v1/user/user-details", {
+    // UPDATED: Relative path used
+    const res = await fetch("/api/v1/user/user-details", {
       method: "GET",
-      credentials: "include",
+      credentials: "include", // Essential for sending the cookie back
     });
 
     if (res.ok) {
-      // Already logged in, redirect directly
       window.location.replace("/pages/aod.html");
       return;
     }
   } catch (err) {
-    console.log("User not logged in, showing login form.");
+    console.log("User not logged in.");
   }
 
-  // Attach login handler
   document.querySelector("form").addEventListener("submit", async (event) => {
     event.preventDefault();
 
@@ -29,19 +28,17 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
 
     try {
-      console.log("Attempting login...");
-
-      let res = await fetch("https://aod-predictor.onrender.com/api/v1/user/login", {
+      // UPDATED: Relative path used
+      let res = await fetch("/api/v1/user/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({ email, password }),
-        credentials: "include", // For sending cookies
+        credentials: "include", // Essential for receiving the cookie
       });
 
       const data = await res.json();
-      console.log("DATA RECEIVED:", data);
 
       if (res.ok) {
         msgbox.innerHTML = "Login Successfully!";
@@ -54,14 +51,10 @@ document.addEventListener("DOMContentLoaded", async () => {
       } else {
         msgbox.innerHTML = "LOGIN FAILED";
         msgbox.style.backgroundColor = "red";
-        console.log(data.message);
         alert(data.message || "Something went wrong");
       }
     } catch (error) {
-      alert(`Error connecting to server. Error = ${error.message}`);
-      console.log(
-        `Error occurred while connecting to backend servers. Error: ${error}`
-      );
+      alert(`Error connecting to server: ${error.message}`);
     }
   });
 });
