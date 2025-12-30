@@ -43,5 +43,5 @@ npm run start:frontend
 npm run start:backend
 
 ### Run Machine learning model 
-cd aodModel 
-uvicorn main:app --reload --port 2000
+- cd aodModel 
+- uvicorn main:app --reload --port 2000
