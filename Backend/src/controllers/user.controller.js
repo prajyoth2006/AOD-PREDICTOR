@@ -305,12 +305,12 @@ const forgetPasswordRequest = asyncHandler(async(req,res) => {
     );
 
     const options = {
-  httpOnly: true,
-  secure: process.env.NODE_ENV === "production",
-  sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
-  maxAge: 15 * 60 * 1000,
-  path: "/"
-};
+      httpOnly: true,
+      secure: process.env.NODE_ENV === "production",
+      sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
+      maxAge: 15 * 60 * 1000,
+      path: "/"
+    };
 
     return res
     .status(200)
