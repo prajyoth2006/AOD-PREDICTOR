@@ -6,8 +6,20 @@ const app = express();
 
 app.set("trust proxy", 1);
 
+const allowedOrigins = [
+  "https://relaxed-licorice-b4ba9a.netlify.app",
+  "http://localhost:3000",
+  "http://localhost:5500"
+];
+
 app.use(cors({
-  origin: "https://relaxed-licorice-b4ba9a.netlify.app",
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
   credentials: true
 }));
 

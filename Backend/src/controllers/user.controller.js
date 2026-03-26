@@ -100,9 +100,9 @@ const loginUser = asyncHandler(async(req,res) => {
 
  const options = {
     httpOnly: true,
-    secure: true,      // Required for cross-site cookies
-    sameSite: "none",  // Required for cross-site cookies
-    maxAge: 24 * 60 * 60 * 1000 // example: 1 day
+    secure: true,            // MUST be true in production (HTTPS)
+    sameSite: "none",        // Required for cross-site cookies
+    maxAge: 24 * 60 * 60 * 1000
 };
 
   console.log(`User successfully logged in with user id : ${loggedUser._id} and email : ${loggedUser.email}`);
@@ -130,13 +130,12 @@ const logOutUser = asyncHandler(async(req,res) => {
     }
   );
 
-  const options =  {
+  const options = {
     httpOnly: true,
-    secure: false,         // ❗ MUST be false on localhost (no HTTPS)
-    sameSite: "Lax",       // "lax" is good for local dev
-    maxAge: 15 * 60 * 1000,
-    path : "/" // 15 minutes
-  }
+    secure: true,            // MUST be true in production (HTTPS)
+    sameSite: "none",        // Required for cross-site cookies
+    maxAge: 24 * 60 * 60 * 1000
+};
 
   console.log("USER LOGGED OUT SUCCESSFULLY !!");
   console.log(`${req.user.email}`);
