@@ -1,60 +1,50 @@
-document.addEventListener("DOMContentLoaded", async () => {
-  // Check if user is already logged in
-  try {
-    // UPDATED: Relative path used
-    const res = await fetch("/api/v1/user/user-details", {
-      method: "GET",
-      credentials: "include", // Essential for sending the cookie back
-    });
+document.querySelector("form").addEventListener("submit", async (event) => {
+  event.preventDefault();
 
-    if (res.ok) {
-      window.location.replace("/pages/aod.html");
-      return;
-    }
-  } catch (err) {
-    console.log("User not logged in.");
+  let email = document.querySelector("#email").value.trim();
+  let password = document.querySelector("#password").value.trim();
+  let msgbox = document.querySelector("#msgbox");
+  let loader = document.querySelector("#loader");
+
+  if (!email || !password) {
+    alert("All fields are necessary");
+    return;
   }
 
-  document.querySelector("form").addEventListener("submit", async (event) => {
-    event.preventDefault();
+  loader.style.display = "block";   // 🔥 SHOW LOADER
+  msgbox.innerHTML = "";
 
-    let email = document.querySelector("#email").value.trim();
-    let password = document.querySelector("#password").value.trim();
-    let msgbox = document.querySelector("#msgbox");
+  try {
+    const res = await fetch(`${API_BASE_URL}/api/v1/user/login`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ email, password }),
+      credentials: "include",
+    });
 
-    if (!email || !password) {
-      alert("All fields are necessary");
-      return;
-    }
-
+    let data = null;
     try {
-      // UPDATED: Relative path used
-      let res = await fetch("/api/v1/user/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ email, password }),
-        credentials: "include", // Essential for receiving the cookie
-      });
+      data = await res.json();
+    } catch {}
 
-      const data = await res.json();
+    if (res.ok) {
+      msgbox.innerHTML = "Login Successfully!";
+      msgbox.style.backgroundColor = "green";
 
-      if (res.ok) {
-        msgbox.innerHTML = "Login Successfully!";
-        msgbox.style.backgroundColor = "green";
-        document.querySelector("form").reset();
-
-        setTimeout(() => {
-          window.location.href = "/pages/aod.html";
-        }, 1500);
-      } else {
-        msgbox.innerHTML = "LOGIN FAILED";
-        msgbox.style.backgroundColor = "red";
-        alert(data.message || "Something went wrong");
-      }
-    } catch (error) {
-      alert(`Error connecting to server: ${error.message}`);
+      setTimeout(() => {
+        window.location.href = "/pages/aod.html";
+      }, 1500);
+    } else {
+      msgbox.innerHTML = "LOGIN FAILED";
+      msgbox.style.backgroundColor = "red";
     }
-  });
+
+  } catch (error) {
+    msgbox.innerHTML = "Server is starting... please wait";
+    msgbox.style.backgroundColor = "orange";
+  } finally {
+    loader.style.display = "none";   // 🔥 HIDE LOADER AFTER RESPONSE
+  }
 });

@@ -1,3 +1,5 @@
+import { API_BASE_URL } from "./constants.js";
+
 const form = document.querySelector("form");
 const msgbox = document.querySelector("#msgbox");
 
@@ -14,11 +16,11 @@ if (form) {
       alert("Email is required");
       return;
     }
-
+    
     try {
       // UPDATED: Using relative path for Netlify Proxy
       const res = await fetch(
-        "/api/v1/user/forget-pass-req",
+        `${API_BASE_URL}/api/v1/user/forget-pass-req`,
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -26,6 +28,7 @@ if (form) {
           credentials: "include" // Keeps session consistency in Safari
         }
       );
+      console.log("request sent");
 
       const data = await res.json().catch(() => ({}));
 

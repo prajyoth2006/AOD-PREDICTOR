@@ -1,3 +1,5 @@
+import { API_BASE_URL } from "./constants.js";
+
 document.querySelector("form").addEventListener("submit",async (event) => {
   event.preventDefault();
 
@@ -12,7 +14,7 @@ document.querySelector("form").addEventListener("submit",async (event) => {
 
   try {
     // UPDATED: Using relative path for Netlify Proxy
-    let res = await fetch("/api/v1/user/reset-password",{
+    let res = await fetch(`${API_BASE_URL}/api/v1/user/reset-password`,{
       method : "POST",
       headers : {
         "Content-Type" : "application/json"

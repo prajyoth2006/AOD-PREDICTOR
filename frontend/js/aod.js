@@ -1,3 +1,5 @@
+import { API_BASE_URL } from "./constants.js";
+
 const msgbox = document.querySelector("#msgbox");
 
 const logoutBtn = document.querySelector("#logout");
@@ -7,7 +9,7 @@ if (logoutBtn) {
     try {
       // UPDATED: Changed to relative path to use Netlify Proxy
       const res = await fetch(
-        "/api/v1/user/logout", 
+        `${API_BASE_URL}/api/v1/user/logout`, 
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -70,7 +72,7 @@ if (form) {
 
       // KEEP AS IS: This is a different service (ML model)
       const response = await fetch(
-        "https://aod-ml-service.onrender.com/predict",
+        "http://127.0.0.1:2000/predict",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },

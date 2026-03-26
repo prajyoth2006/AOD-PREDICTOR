@@ -1,3 +1,5 @@
+import { API_BASE_URL } from "./constants.js";
+
 document.querySelector("form").addEventListener("submit",async (event) => {
   event.preventDefault();
 
@@ -13,7 +15,7 @@ document.querySelector("form").addEventListener("submit",async (event) => {
 
   try {
     // UPDATED: Using relative path for Netlify Proxy to fix Safari cookie issues
-    let res = await fetch("/api/v1/user/update-password",{
+    let res = await fetch(`${API_BASE_URL}/api/v1/user/update-password`,{
       method : "POST",
       headers : {
         "Content-Type" : "application/json"

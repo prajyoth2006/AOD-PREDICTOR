@@ -1,3 +1,6 @@
+import { API_BASE_URL } from "./constants.js";
+
+
 const otpInputs = document.querySelectorAll(".otp-input");
 const form = document.querySelector("form");
 const msgbox = document.querySelector("#msgbox");
@@ -43,7 +46,7 @@ form.addEventListener("submit", async (event) => {
 
   try {
     // UPDATED: Using relative path for Netlify Proxy
-    let res = await fetch("/api/v1/user/forget-pass-verify", {
+    let res = await fetch(`${API_BASE_URL}/api/v1/user/forget-pass-verify`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json"

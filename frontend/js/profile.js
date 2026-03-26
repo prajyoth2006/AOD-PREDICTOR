@@ -1,11 +1,12 @@
+import { API_BASE_URL } from "./constants.js";
+
 document.addEventListener("DOMContentLoaded", async () => {
   const profileContainer = document.getElementById("profile-container");
 
   try {
-    // UPDATED: Using relative path to go through the Netlify Proxy
-    const res = await fetch("/api/v1/user/user-details", {
+    const res = await fetch(`${API_BASE_URL}/api/v1/user/user-details`, {
       method: "GET",
-      credentials: "include", // This sends the cookie back to the server
+      credentials: "include",
     });
 
     const result = await res.json();
