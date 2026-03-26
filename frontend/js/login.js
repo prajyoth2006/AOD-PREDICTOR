@@ -1,3 +1,5 @@
+import { API_BASE_URL } from "./constants.js";
+
 document.querySelector("form").addEventListener("submit", async (event) => {
   event.preventDefault();
 
