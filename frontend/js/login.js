@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   if (msgbox) {
     msgbox.innerHTML = "Checking session...";
     msgbox.style.backgroundColor = "orange";
-    msgbox.style.display = "block"; // Make sure it is visible
+    msgbox.style.display = "flex"; // Make sure it is visible
   }
   
   if (form) {
@@ -74,7 +74,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       loader.style.display = "block";   
       
       // 🔥 THE FIX: Make the message box visible again for the login attempt
-      msgbox.style.display = "block"; 
+      msgbox.style.display = "flex"; 
       msgbox.innerHTML = "Logging in...";
       msgbox.style.backgroundColor = "orange";
 
