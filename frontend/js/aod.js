@@ -72,7 +72,7 @@ if (form) {
 
       // KEEP AS IS: This is a different service (ML model)
       const response = await fetch(
-        "http://127.0.0.1:2000/predict",
+        "https://aod-ml-service.onrender.com/predict",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
