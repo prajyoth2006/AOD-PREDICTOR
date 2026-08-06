@@ -105,6 +105,7 @@ The project follows a modular architecture with independent services:
 
 # 🧠 Machine Learning Pipeline
 
+```mermaid
 graph TD
 
 A[Dataset]
@@ -122,6 +123,7 @@ E --> F[Model Evaluation]
 F --> G[Save Model]
 
 G --> H[FastAPI Prediction API]
+```
 
 ---
 
@@ -186,32 +188,25 @@ AOD-PREDICTOR
 sequenceDiagram
 
 participant User
-
 participant Frontend
-
-participant Backend
-
 participant FastAPI
-
 participant ML
+participant Backend
+participant MongoDB
 
-User->>Frontend: Enter Features
+User->>Frontend: Login / Register
+Frontend->>Backend: Authentication Request
+Backend->>MongoDB: Verify / Store User
+MongoDB-->>Backend: Authentication Result
+Backend-->>Frontend: JWT / Login Response
 
-Frontend->>Backend: POST Request
-
-Backend->>FastAPI: Prediction Request
-
-FastAPI->>ML: Predict
-
-ML-->>FastAPI: Prediction
-
-FastAPI-->>Backend: JSON Response
-
-Backend-->>Frontend: Prediction
-
-Frontend-->>User: Display Result
+User->>Frontend: Enter Prediction Features
+Frontend->>FastAPI: Prediction Request
+FastAPI->>ML: Predict AOD
+ML-->>FastAPI: Predicted AOD
+FastAPI-->>Frontend: Prediction Response
+Frontend-->>User: Display Predicted AOD
 ```
-
 ---
 
 # 📊 Model Information
