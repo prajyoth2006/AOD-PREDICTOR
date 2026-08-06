@@ -1,86 +1,124 @@
 ````markdown
-# 🌍 AOD Predictor
+<h1 align="center">🌍 AOD Predictor</h1>
 
-> **A Full-Stack Machine Learning Web Application for Predicting Aerosol Optical Depth (AOD)**
+<h3 align="center">
+Full-Stack Machine Learning Application for Aerosol Optical Depth Prediction
+</h3>
 
-![Python](https://img.shields.io/badge/Python-3.10+-blue)
-![FastAPI](https://img.shields.io/badge/FastAPI-Backend-009688)
-![Node.js](https://img.shields.io/badge/Node.js-Express-339933)
-![JavaScript](https://img.shields.io/badge/JavaScript-Frontend-F7DF1E)
-![Machine Learning](https://img.shields.io/badge/Machine%20Learning-Random%20Forest-success)
-![License](https://img.shields.io/badge/License-MIT-green)
+<p align="center">
+Predicting Aerosol Optical Depth (AOD) using Machine Learning with a scalable Full-Stack Architecture.
+</p>
 
----
+<p align="center">
 
-# 📖 Overview
+![Python](https://img.shields.io/badge/Python-3.10+-blue?style=for-the-badge&logo=python&logoColor=white)
+![FastAPI](https://img.shields.io/badge/FastAPI-009688?style=for-the-badge&logo=fastapi&logoColor=white)
+![Node.js](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=node.js&logoColor=white)
+![Express](https://img.shields.io/badge/Express.js-000000?style=for-the-badge&logo=express&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
+![Machine Learning](https://img.shields.io/badge/Random_Forest-Regressor-success?style=for-the-badge)
 
-**AOD Predictor** is a Full-Stack Machine Learning application developed as a **B.Tech Final Year Project** to predict **Aerosol Optical Depth (AOD)** using environmental and satellite-derived parameters.
-
-The application integrates a responsive web interface, a RESTful backend API, and a dedicated Machine Learning service to provide accurate AOD predictions for environmental monitoring and research.
-
-The system follows a modular architecture where each component is independent, making it scalable, maintainable, and easy to deploy.
-
----
-
-# 🎯 Problem Statement
-
-Atmospheric aerosols influence:
-
-- Air Quality
-- Climate Change
-- Weather Forecasting
-- Environmental Health
-- Atmospheric Research
-
-Traditional AOD estimation requires sophisticated instruments and satellite processing. This project demonstrates how Machine Learning can estimate Aerosol Optical Depth using environmental features through a web-based prediction system.
+</p>
 
 ---
 
-# 🚀 Features
+# 📖 About The Project
 
-- 🌍 Aerosol Optical Depth Prediction
+**AOD Predictor** is a Full-Stack Machine Learning application developed as a **B.Tech Final Year Project** to predict **Aerosol Optical Depth (AOD)** using environmental parameters.
+
+The project combines
+
+- 🌐 Responsive Web Application
+- ⚙️ Node.js REST API
+- 🤖 FastAPI Machine Learning Service
+- 🌲 Random Forest Regression Model
+
+to provide fast and reliable predictions for environmental monitoring and atmospheric research.
+
+---
+
+# 🎯 Motivation
+
+Aerosol Optical Depth (AOD) plays an important role in
+
+- 🌍 Air Quality Monitoring
+- ☁️ Climate Change Studies
+- 🌦 Weather Forecasting
+- 🛰 Remote Sensing
+- 🔬 Environmental Research
+
+Traditional AOD estimation requires expensive instruments and satellite processing.
+
+This project demonstrates how Machine Learning can estimate AOD efficiently using environmental features.
+
+---
+
+# ✨ Features
+
+- 🌍 Predict Aerosol Optical Depth
 - 🤖 Machine Learning Prediction Engine
-- ⚡ FastAPI ML Service
-- 🌐 Node.js REST Backend
-- 💻 Responsive Web Interface
-- 📊 Real-Time Predictions
-- 🔗 Modular Architecture
-- 📦 Easy Deployment
-- 🚀 Fast Prediction Response
-- 📈 Scalable System Design
+- ⚡ FastAPI Prediction API
+- 🌐 Node.js + Express Backend
+- 💻 Interactive Frontend
+- 📈 Real-Time Prediction
+- 🔗 Modular Full-Stack Architecture
+- 🚀 Easy Deployment
+- 📦 RESTful APIs
+- 🛠 Clean Project Structure
 
 ---
 
 # 🏗️ System Architecture
 
-```text
-                    User
-                      │
-                      ▼
-             Frontend (HTML/CSS/JS)
-                      │
-                HTTP Request
-                      │
-                      ▼
-            Node.js + Express Backend
-                      │
-          REST API Communication
-                      │
-                      ▼
-          FastAPI Machine Learning API
-                      │
-             Random Forest Model
-                      │
-                      ▼
-               Predicted AOD Value
-                      │
-                      ▼
-              Response to Frontend
+```mermaid
+graph LR
+
+A[User]
+
+--> B[Frontend]
+
+B --> C[Node.js Backend]
+
+C --> D[FastAPI ML API]
+
+D --> E[Random Forest Model]
+
+E --> D
+
+D --> C
+
+C --> B
+
+B --> A
 ```
 
 ---
 
-# 🛠️ Tech Stack
+# 🧠 Machine Learning Pipeline
+
+```mermaid
+graph TD
+
+A[Dataset]
+
+--> B[Data Cleaning]
+
+B --> C[Feature Engineering]
+
+C --> D[Train/Test Split]
+
+D --> E[Random Forest Regressor]
+
+E --> F[Model Evaluation]
+
+F --> G[Save Model]
+
+G --> H[FastAPI Prediction API]
+```
+
+---
+
+# 🛠 Tech Stack
 
 ## Frontend
 
@@ -88,20 +126,26 @@ Traditional AOD estimation requires sophisticated instruments and satellite proc
 - CSS3
 - JavaScript
 
+---
+
 ## Backend
 
 - Node.js
 - Express.js
 
+---
+
 ## Machine Learning
 
 - Python
-- FastAPI
-- Uvicorn
 - Scikit-Learn
+- FastAPI
 - Pandas
 - NumPy
 - Joblib
+- Uvicorn
+
+---
 
 ## Tools
 
@@ -114,66 +158,51 @@ Traditional AOD estimation requires sophisticated instruments and satellite proc
 # 📂 Project Structure
 
 ```text
-AOD-PREDICTOR/
+AOD-PREDICTOR
 │
-├── frontend/
-│   ├── css/
-│   ├── js/
-│   ├── images/
-│   ├── pages/
-│   └── index.html
+├── frontend
 │
-├── backend/
-│   ├── controllers/
-│   ├── middleware/
-│   ├── models/
-│   ├── routes/
-│   ├── utils/
-│   ├── config/
-│   ├── server.js
-│   └── package.json
+├── backend
 │
-├── aodModel/
-│   ├── dataset/
-│   ├── model/
-│   ├── main.py
-│   ├── train.py
-│   ├── predict.py
-│   ├── requirements.txt
-│   └── rf_model.pkl
+├── aodModel
 │
 ├── README.md
-├── package.json
-└── .gitignore
+│
+└── package.json
 ```
 
 ---
 
-# ⚙️ Machine Learning Pipeline
+# 🔄 Prediction Workflow
 
-```text
-Dataset
-     │
-     ▼
-Data Cleaning
-     │
-     ▼
-Feature Engineering
-     │
-     ▼
-Train-Test Split
-     │
-     ▼
-Random Forest Regressor
-     │
-     ▼
-Model Evaluation
-     │
-     ▼
-Model Serialization (.pkl)
-     │
-     ▼
-FastAPI Prediction API
+```mermaid
+sequenceDiagram
+
+participant User
+
+participant Frontend
+
+participant Backend
+
+participant FastAPI
+
+participant ML
+
+User->>Frontend: Enter Features
+
+Frontend->>Backend: POST Request
+
+Backend->>FastAPI: Prediction Request
+
+FastAPI->>ML: Predict
+
+ML-->>FastAPI: Prediction
+
+FastAPI-->>Backend: JSON Response
+
+Backend-->>Frontend: Prediction
+
+Frontend-->>User: Display Result
 ```
 
 ---
@@ -181,60 +210,20 @@ FastAPI Prediction API
 # 📊 Model Information
 
 | Property | Value |
-|-----------|-------|
+|----------|--------|
 | Problem Type | Regression |
 | Algorithm | Random Forest Regressor |
 | Language | Python |
 | Framework | Scikit-Learn |
-| Model Serving | FastAPI |
-| API Server | Uvicorn |
-| Model Storage | Joblib (.pkl) |
-
----
-
-# 🔄 Application Workflow
-
-```text
-User
-
-↓
-
-Frontend
-
-↓
-
-Backend API
-
-↓
-
-FastAPI Prediction Service
-
-↓
-
-Machine Learning Model
-
-↓
-
-Predicted AOD
-
-↓
-
-Backend
-
-↓
-
-Frontend
-
-↓
-
-User
-```
+| API | FastAPI |
+| Backend | Node.js |
+| Frontend | HTML, CSS, JavaScript |
 
 ---
 
 # 🚀 Installation
 
-## Clone the Repository
+## Clone Repository
 
 ```bash
 git clone https://github.com/prajyoth2006/AOD-PREDICTOR.git
@@ -244,7 +233,7 @@ cd AOD-PREDICTOR
 
 ---
 
-## Backend Setup
+## Backend
 
 ```bash
 cd backend
@@ -256,7 +245,7 @@ npm start
 
 ---
 
-## Machine Learning Setup
+## Machine Learning Server
 
 ```bash
 cd aodModel
@@ -268,7 +257,7 @@ uvicorn main:app --reload --port 2000
 
 ---
 
-## Frontend Setup
+## Frontend
 
 ```bash
 cd frontend
@@ -280,85 +269,36 @@ npm start
 
 ---
 
-# 🌐 API Workflow
-
-```text
-Frontend
-     │
-POST Request
-     │
-     ▼
-Backend
-     │
-POST Request
-     │
-     ▼
-FastAPI
-     │
-Prediction
-     │
-     ▼
-Backend
-     │
-JSON Response
-     │
-     ▼
-Frontend
-```
-
----
-
-# 📈 Applications
+# 🌍 Applications
 
 - Air Quality Monitoring
-- Pollution Analysis
-- Atmospheric Science
 - Climate Change Research
+- Atmospheric Science
+- Pollution Analysis
 - Environmental Monitoring
 - Academic Research
-- Scientific Data Analysis
 
 ---
 
-# 🔮 Future Improvements
+# 🚀 Future Improvements
 
 - Deep Learning Models
-- XGBoost and LightGBM Comparison
-- Explainable AI using SHAP
-- Docker Containerization
+- XGBoost & LightGBM
+- Explainable AI (SHAP)
+- Docker Support
 - CI/CD Pipeline
-- Kubernetes Deployment
-- AWS/Azure/GCP Deployment
-- User Authentication
-- Prediction History Dashboard
-- Interactive Data Visualization
-- GIS Map Integration
-- Live Weather API Integration
-- Batch Prediction Support
-- Model Monitoring
-
----
-
-# 📚 Future Scope
-
-Future versions of the project may include:
-
-- Satellite Image Processing
-- Time-Series AOD Forecasting
-- Ensemble Machine Learning Models
-- Explainable AI
-- Mobile Application
-- Real-Time Air Quality Dashboard
-- Regional Pollution Forecasting
-- IoT Sensor Integration
-- Automated Model Retraining
-- Cloud-Based Prediction Services
+- Kubernetes
+- AWS Deployment
+- Live Weather API
+- Prediction Dashboard
+- Interactive Charts
+- GIS Integration
 
 ---
 
 # 🤝 Contributing
 
-Contributions are welcome.
+Contributions are always welcome.
 
 1. Fork the repository
 
@@ -374,7 +314,7 @@ git checkout -b feature-name
 git commit -m "Add new feature"
 ```
 
-4. Push to GitHub
+4. Push the branch
 
 ```bash
 git push origin feature-name
@@ -390,20 +330,37 @@ This project is licensed under the **MIT License**.
 
 ---
 
-# 👨‍💻 Author
+# 👨‍💻 Developer
 
 **M. Prajyoth**
 
-B.Tech, Civil Engineering  
+B.Tech Civil Engineering
+
 Indian Institute of Technology Patna
 
-GitHub: https://github.com/prajyoth2006
+<p>
+
+<a href="https://github.com/prajyoth2006">
+<img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github"/>
+</a>
+
+<a href="https://linkedin.com/in/mprajyoth">
+<img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white"/>
+</a>
+
+<a href="mailto:prajyoth2006@gmail.com">
+<img src="https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=gmail&logoColor=white"/>
+</a>
+
+</p>
 
 ---
 
-# ⭐ Support
+<p align="center">
 
-If you found this project useful, please consider giving it a **Star ⭐**.
+⭐ If you like this project, consider giving it a Star!
 
-Your support helps improve the project and motivates future development.
+Made with ❤️ by <b>M. Prajyoth</b>
+
+</p>
 ````
