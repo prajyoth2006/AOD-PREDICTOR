@@ -1,4 +1,3 @@
-````markdown
 <h1 align="center">🌍 AOD Predictor</h1>
 
 <h3 align="center">
@@ -363,4 +362,3 @@ Indian Institute of Technology Patna
 Made with ❤️ by <b>M. Prajyoth</b>
 
 </p>
-````
