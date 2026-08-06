@@ -105,7 +105,6 @@ The project follows a modular architecture with independent services:
 
 # 🧠 Machine Learning Pipeline
 
-```mermaid
 graph TD
 
 A[Dataset]
@@ -123,7 +122,6 @@ E --> F[Model Evaluation]
 F --> G[Save Model]
 
 G --> H[FastAPI Prediction API]
-```
 
 ---
 
