@@ -186,27 +186,18 @@ AOD-PREDICTOR
 
 ```mermaid
 sequenceDiagram
+    participant User
+    participant Frontend
+    participant FastAPI
 
-participant User
-participant Frontend
-participant FastAPI
-participant ML
-participant Backend
-participant MongoDB
-
-User->>Frontend: Login / Register
-Frontend->>Backend: Authentication Request
-Backend->>MongoDB: Verify / Store User
-MongoDB-->>Backend: Authentication Result
-Backend-->>Frontend: JWT / Login Response
-
-User->>Frontend: Enter Prediction Features
-Frontend->>FastAPI: Prediction Request
-FastAPI->>ML: Predict AOD
-ML-->>FastAPI: Predicted AOD
-FastAPI-->>Frontend: Prediction Response
-Frontend-->>User: Display Predicted AOD
+    User->>Frontend: Enter environmental parameters
+    Frontend->>FastAPI: POST /predict
+    FastAPI->>FastAPI: Load trained Random Forest model
+    FastAPI->>FastAPI: Preprocess input & predict AOD
+    FastAPI-->>Frontend: Predicted AOD (JSON)
+    Frontend-->>User: Display prediction
 ```
+
 ---
 
 # 📊 Model Information
