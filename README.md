@@ -70,28 +70,38 @@ This project demonstrates how Machine Learning can estimate AOD efficiently usin
 # 🏗️ System Architecture
 
 ```mermaid
-graph LR
+graph TD
 
-A[User]
+    A[👤 User]
 
---> B[Frontend]
+    A --> B[🌐 Frontend<br>HTML • CSS • JavaScript]
 
-B --> C[Node.js Backend]
+    B -->|Prediction Request| C[🤖 FastAPI ML Service]
 
-C --> D[FastAPI ML API]
+    C --> D[🌲 Random Forest Model]
 
-D --> E[Random Forest Model]
+    D --> C
 
-E --> D
+    C -->|Predicted AOD| B
 
-D --> C
+    B -->|Authentication & User Management| E[⚙️ Node.js + Express Backend]
 
-C --> B
+    E --> F[(MongoDB)]
 
-B --> A
+    F --> E
+
+    E --> B
 ```
 
----
+### Architecture Overview
+
+The project follows a modular architecture with independent services:
+
+- **Frontend** provides the user interface and collects prediction inputs.
+- **FastAPI** hosts the trained Machine Learning model and performs AOD predictions.
+- **Node.js + Express** handles user authentication, authorization, and user management.
+- **MongoDB** stores user accounts and authentication-related data.
+- The prediction service and authentication service are independent, making the system easier to maintain and scale.
 
 # 🧠 Machine Learning Pipeline
 
