@@ -5,29 +5,92 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AOD FINDER</title>
     <link href="css/style.css" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
-  <nav>
-    <div class="logo">
-      <a href="index.html"> AOD FINDER </a>
-    </div>
-    <div class="options">
-      <a href="index.html"> Home </a>
-      <a href="pages/aboutUs.html"> About </a>
-      <a href="pages/contactUs.html"> Contact Us </a>
-      <a href="pages/login.html" id="login"> Login </a>
-      <a href="pages/signUp.html" id="signup"> Sign up </a>
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="logo">
+        <a href="index.html">
+          <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="logo-icon"><path d="M22 12h-2.48a2 2 0 0 0-1.93 1.46l-2.35 8.36a.25.25 0 0 1-.48 0L9.24 2.18a.25.25 0 0 0-.48 0l-2.35 8.36A2 2 0 0 1 4.48 12H2"/></svg>
+          AOD FINDER
+        </a>
+      </div>
+      
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="pages/aboutUs.html">About</a>
+        <a href="pages/contactUs.html">Contact Us</a>
+      </div>
+
+      <div class="nav-buttons">
+        <a href="pages/login.html" class="btn btn-ghost">Login</a>
+        <a href="pages/signUp.html" class="btn btn-solid">Sign up</a>
+      </div>
+
+      <button class="mobile-menu-btn" aria-label="Toggle navigation menu" title="Open menu">
+        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+      </button>
     </div>
   </nav>
 
-  <main>
-    <div class="trynow">
-      <p class="promotion"> Accurate Aerosol Optical Depth predictions using advanced machine learning models.</p>
-      <a href="pages/login.html" id="btn1"> Try Now </a>
-    </div>
-    <div class="img1">
-      <img src="assets/casual-life-3d-excited-young-woman-receiving-like-notifications-on-her-laptop 1.png">
+  <main class="hero">
+    <div class="hero-container">
+      <div class="hero-content">
+        <div class="badge">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
+          Next-Gen Prediction Tool
+        </div>
+        
+        <h1 class="hero-title">
+          Accurate Aerosol Optical Depth predictions using 
+          <span class="gradient-text">advanced machine learning</span>.
+        </h1>
+        
+        <p class="hero-subtitle">
+          Empower your environmental research and monitoring with our cutting-edge AOD prediction models. Fast, reliable, and built for modern data workflows.
+        </p>
+        
+        <div class="hero-actions">
+          <a href="pages/login.html" class="btn btn-primary btn-large group">
+            Try Now
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon-right"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </a>
+          <a href="pages/aboutUs.html" class="btn btn-outline btn-large">
+            Learn More
+          </a>
+        </div>
+
+        <div class="hero-features">
+          <div class="feature">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feature-icon"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg>
+            <span>Real-time Analysis</span>
+          </div>
+          <div class="feature">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feature-icon"><path d="M22 12h-2.48a2 2 0 0 0-1.93 1.46l-2.35 8.36a.25.25 0 0 1-.48 0L9.24 2.18a.25.25 0 0 0-.48 0l-2.35 8.36A2 2 0 0 1 4.48 12H2"/></svg>
+            <span>High Accuracy Models</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-image-wrapper">
+        <div class="blob"></div>
+        <div class="image-container">
+<img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop" alt="Data analysis dashboard">          <div class="image-overlay"></div>
+        </div>
+      </div>
     </div>
   </main>
+
+  <script>
+    const mobileBtn = document.querySelector('.mobile-menu-btn');
+    const navLinks = document.querySelector('.nav-links');
+    const navButtons = document.querySelector('.nav-buttons');
+
+    mobileBtn.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+      navButtons.classList.toggle('active');
+    });
+  </script>
 </body>
 </html>
